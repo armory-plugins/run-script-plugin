@@ -9,4 +9,18 @@ The `run-script-plugin` provides Spinnaker with a preconfigured job stage that a
 TODO
 
 ## Configuration
-TODO
+Sample Configuration:
+```
+spinnaker:
+  extensibility:
+    plugins:
+      Armory.PreConfiguredJobPlugin.RunScript:
+        enabled: true
+        extensions:
+          armory.RunScriptPreConfiguredJobStage:
+            enabled: true
+            config:
+              account: kubernetes
+              credentials: kubernetes
+              namespace: jacob-dev
+```
