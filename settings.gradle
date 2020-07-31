@@ -8,7 +8,7 @@ pluginManagement {
 
 rootProject.name="run-script-plugin"
 
-include "armory-orca"
+include "run-script-plugin-orca"
 
 def setBuildFile(project) {
   project.buildFileName = "${project.name}.gradle"

@@ -29,8 +29,8 @@ class RunScriptPreConfiguredStage(val pluginSdks: PluginSdks, val configuration:
         if (!configuration.credentials.isNullOrEmpty()) {
             jobProperties.credentials = configuration.credentials
         }
-        if (!configuration.namespace.isNullOrEmpty()) {
-            jobProperties.manifest.metadata.namespace = configuration.namespace
+        if (!configuration.initContainerImage.isNullOrEmpty()) {
+            jobProperties.manifest.spec.template.spec.initContainers[0].image = configuration.initContainerImage
         }
         return arrayListOf(jobProperties)
     }
