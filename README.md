@@ -5,6 +5,11 @@ a 1.0 release._
 
 The `run-script-plugin` provides Spinnaker with a preconfigured job stage that allows the operator to run a custom script. This is useful if you need to run an arbitrary script and use the output as part of your pipeline.
 
+## Screenshots
+![Image of stage configuration](screenshot1.png)
+![Image of stage execution UI](screenshot2.png)
+![Image of stage execution console log](screenshot3.png)
+
 ## Installation
 TODO
 
