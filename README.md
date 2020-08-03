@@ -1,3 +1,6 @@
+![CI](https://github.com/armory-plugins/run-script-plugin/workflows/CI/badge.svg)
+![Latest Orca](https://github.com/armory-plugins/run-script-plugin/workflows/Latest%20Orca/badge.svg?branch=master)
+
 # run-script-plugin
 
 _Note: This plugin is under active development and subject to change. Use with caution until there has been
