@@ -30,5 +30,8 @@ spinnaker:
             config:
               account: kubernetes
               credentials: kubernetes
-            #  initContainerImage: myrepo/fetch-artifact:latest # Optional to override default init container image  
+              artifactServiceUrl: http://spin-clouddriver.prod:7002
+              gitArtifactAccount: gitrepo
+            # Optional: override default init container image 
+              initContainerImage: myrepo/fetch-artifact:latest 
 ```
