@@ -23,15 +23,9 @@ class RunScriptPlugin(wrapper: PluginWrapper): Plugin(wrapper) {
 class RunScriptPreConfiguredStage(val pluginSdks: PluginSdks, val configuration: PluginConfig) : PreconfiguredJobConfigurationProvider {
     override fun getJobConfigurations(): List<KubernetesPreconfiguredJobProperties> {
         val jobProperties = pluginSdks.yamlResourceLoader().loadResource("com/armory/plugin/preconfigured/armory-run-script.yaml", KubernetesPreconfiguredJobProperties::class.java)
-        if (!configuration.account.isNullOrEmpty()) {
-            jobProperties.account = configuration.account
-        }
-        if (!configuration.credentials.isNullOrEmpty()) {
-            jobProperties.credentials = configuration.credentials
-        }
-        if (!configuration.initContainerImage.isNullOrEmpty()) {
-            jobProperties.manifest.spec.template.spec.initContainers[0].image = configuration.initContainerImage
-        }
+        ConfigOverrider.override(configuration, jobProperties)
         return arrayListOf(jobProperties)
     }
+
+
 }
