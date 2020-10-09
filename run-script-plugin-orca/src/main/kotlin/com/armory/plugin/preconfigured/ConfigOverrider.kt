@@ -1,7 +1,6 @@
 package com.armory.plugin.preconfigured
 
 import com.netflix.spinnaker.orca.clouddriver.config.KubernetesPreconfiguredJobProperties
-import io.kubernetes.client.models.V1EnvVar
 import java.lang.IllegalStateException
 
 class ConfigOverrider() {
@@ -20,7 +19,7 @@ class ConfigOverrider() {
       val initContainer = jobProperties.manifest.spec.template.spec.initContainers.firstOrNull{ it.name == "git" }
 
       if (initContainer == null) {
-        throw IllegalStateException("job manifest must have initContianer with name git")
+        throw IllegalStateException("job manifest must have initContainer with name git")
       }
 
       if (!configuration.initContainerImage.isNullOrEmpty()) {
