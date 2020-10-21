@@ -24,14 +24,11 @@ spinnaker:
     plugins:
       Armory.PreConfiguredJobPlugin.RunScript:
         enabled: true
-        extensions:
-          armory.RunScriptPreConfiguredJobStage:
-            enabled: true
-            config:
-              account: kubernetes
-              credentials: kubernetes
-              artifactServiceUrl: http://spin-clouddriver.prod:7002
-              gitArtifactAccount: gitrepo
-            # Optional: override default init container image 
-              initContainerImage: myrepo/fetch-artifact:latest 
+        config:
+          account: kubernetes
+          credentials: kubernetes
+          artifactServiceUrl: http://spin-clouddriver.prod:7002
+          gitArtifactAccount: gitrepo
+        # Optional: override default init container image 
+          initContainerImage: myrepo/fetch-artifact:latest 
 ```
