@@ -75,6 +75,7 @@ jobs:
         id: add-release
         uses: armory-io/plugin-metadata-updater@master
         env:
+          JAVA_HOME: ''
           GITHUB_OAUTH: ${{ secrets.TOKEN }}
         with:
           metadata: build/distributions/plugin-info.json
