@@ -1,8 +1,8 @@
 package com.armory.plugin.preconfigured
 
-import com.netflix.spinnaker.kork.plugins.api.ExtensionConfiguration
+import com.netflix.spinnaker.kork.plugins.api.PluginConfiguration
 
-@ExtensionConfiguration("armory.RunScriptPreConfiguredJobStage")
+@PluginConfiguration
 data class PluginConfig(
   var account: String?,
   var credentials: String?,

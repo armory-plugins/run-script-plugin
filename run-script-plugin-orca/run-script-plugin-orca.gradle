@@ -1,7 +1,10 @@
 buildscript {
     repositories {
         mavenCentral()
-        jcenter()
+    }
+    dependencies {
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlinVersion"
+        classpath "org.jetbrains.kotlin:kotlin-allopen:$kotlinVersion"
     }
 }
 
@@ -17,6 +20,9 @@ repositories {
     mavenCentral()
     jcenter()
     maven { url "http://dl.bintray.com/spinnaker/spinnaker/" }
+
+    // Used for testing against the Google product releases.
+    maven { url "https://spinnaker-releases.bintray.com/jars" }
 }
 
 spinnakerPlugin {
@@ -25,7 +31,6 @@ spinnakerPlugin {
 }
 
 dependencies {
-    compile group: 'com.fasterxml.jackson.dataformat', name: 'jackson-dataformat-yaml', version: '2.11.3'
     compileOnly(group: 'org.pf4j', name: 'pf4j', version: "${pf4jVersion}") {
         exclude group: "org.slf4j"
     }
