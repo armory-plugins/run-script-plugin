@@ -32,3 +32,11 @@ spinnaker:
         # Optional: override default init container image 
           initContainerImage: myrepo/fetch-artifact:latest 
 ```
+
+# Development
+
+## Release
+
+At this time, the process of creating a new release for the run-script-plugin is as follows:
+- Create and push a new release tag (ie `v0.0.1`). This will kick off the appropriate action to create a gh release and open a PR to the plugins repository.
+- Navigate to the plugins repository pull requests and merge the update (https://github.com/armory-plugins/pluginRepository/pulls)
