@@ -35,15 +35,15 @@ dependencies {
         exclude group: "org.slf4j"
     }
     compileOnly "org.jetbrains.kotlin:kotlin-stdlib-jdk8:${kotlinVersion}"
-    compileOnly (group: 'com.netflix.spinnaker.kork', name: 'kork-plugins-api', version: "${korkVersion}")
-    compileOnly (group: 'com.netflix.spinnaker.orca', name: 'orca-api', version: "${orcaVersion}")
-    compileOnly (group: 'com.netflix.spinnaker.orca', name: 'orca-clouddriver', version: "${orcaVersion}")
+    compileOnly (group: 'io.spinnaker.kork', name: 'kork-plugins-api', version: "${korkVersion}")
+    compileOnly (group: 'io.spinnaker.orca', name: 'orca-api', version: "${orcaVersion}")
+    compileOnly (group: 'io.spinnaker.orca', name: 'orca-clouddriver', version: "${orcaVersion}")
     compileOnly (group: 'io.kubernetes', name: 'client-java', version: "${k8sClientVersion}")
 
     kapt(group: 'org.pf4j', name: 'pf4j', version: "${pf4jVersion}")
 
-    testImplementation (group: 'com.netflix.spinnaker.orca', name: 'orca-api', version: "${orcaVersion}")
-    testImplementation (group: 'com.netflix.spinnaker.orca', name: 'orca-clouddriver', version: "${orcaVersion}")
+    testImplementation (group: 'io.spinnaker.orca', name: 'orca-api', version: "${orcaVersion}")
+    testImplementation (group: 'io.spinnaker.orca', name: 'orca-clouddriver', version: "${orcaVersion}")
     testImplementation (group: 'io.kubernetes', name: 'client-java', version: "${k8sClientVersion}")
 
     testImplementation "org.junit.jupiter:junit-jupiter-api:5.5.2"
