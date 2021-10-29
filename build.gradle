@@ -2,13 +2,11 @@ buildscript {
   repositories {
     mavenCentral()
   }
-  dependencies {
-  }
 }
 
 plugins {
   id("io.spinnaker.plugin.bundler").version("$spinnakerGradleVersion")
-  id("com.palantir.git-version").version("0.12.2")
+  id("com.palantir.git-version").version("0.12.3")
 }
 
 spinnakerBundle {
@@ -18,11 +16,33 @@ spinnakerBundle {
   version = rootProject.version
 }
 
+repositories {
+  mavenCentral()
+}
+
 version = normalizedVersion()
 
 subprojects {
   group = "com.armory.plugin"
   version = rootProject.version
+//  repositories {
+//    mavenCentral()
+//    maven {
+//      url 'https://armory.jfrog.io/armory/gradle-dev-local/'
+//      credentials {
+//        username = "${artifactory_user}"
+//        password = "${artifactory_password}"
+//      }
+//    }
+//
+//    maven {
+//      url 'https://armory.jfrog.io/artifactory/spinnaker/'
+//      credentials {
+//        username = "${artifactory_user}"
+//        password = "${artifactory_password}"
+//      }
+//    }
+//  }
 }
 
 String normalizedVersion() {
