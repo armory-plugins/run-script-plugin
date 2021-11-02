@@ -16,7 +16,7 @@ class ConfigOverrider() {
         jobProperties.credentials = configuration.credentials
       }
 
-      val initContainer = jobProperties.manifest.spec.template.spec.initContainers.firstOrNull{ it.name == "git" }
+      val initContainer = jobProperties.manifest.spec?.template?.spec?.initContainers?.firstOrNull{ it.name == "git" }
 
       if (initContainer == null) {
         throw IllegalStateException("job manifest must have initContainer with name git")
@@ -28,14 +28,14 @@ class ConfigOverrider() {
 
       // TODO: there's probably a way more efficient way to do this.
       if (!configuration.artifactServiceUrl.isNullOrEmpty()) {
-        val targetEnvVariable = initContainer.env.firstOrNull{ it.name == "ARTIFACT_SERVICE" }
+        val targetEnvVariable = initContainer.env?.firstOrNull{ it.name == "ARTIFACT_SERVICE" }
         if (targetEnvVariable != null) {
           targetEnvVariable.value = configuration.artifactServiceUrl
         }
       }
 
       if (!configuration.gitArtifactAccount.isNullOrEmpty()) {
-        val targetEnvVariable = initContainer.env.firstOrNull{ it.name == "ARTIFACT_ACCOUNT" }
+        val targetEnvVariable = initContainer.env?.firstOrNull{ it.name == "ARTIFACT_ACCOUNT" }
         if (targetEnvVariable != null) {
           targetEnvVariable.value = configuration.gitArtifactAccount
         }

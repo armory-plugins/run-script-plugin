@@ -1,6 +1,13 @@
 buildscript {
   repositories {
     mavenCentral()
+    maven {
+      url 'https://armory.jfrog.io/armory/gradle-plugins/'
+      credentials {
+        username = "${artifactory_user}"
+        password = "${artifactory_password}"
+      }
+    }
   }
 }
 
@@ -16,33 +23,39 @@ spinnakerBundle {
   version = rootProject.version
 }
 
-repositories {
-  mavenCentral()
-}
-
 version = normalizedVersion()
 
 subprojects {
   group = "com.armory.plugin"
   version = rootProject.version
-//  repositories {
-//    mavenCentral()
-//    maven {
-//      url 'https://armory.jfrog.io/armory/gradle-dev-local/'
-//      credentials {
-//        username = "${artifactory_user}"
-//        password = "${artifactory_password}"
-//      }
-//    }
-//
-//    maven {
-//      url 'https://armory.jfrog.io/artifactory/spinnaker/'
-//      credentials {
-//        username = "${artifactory_user}"
-//        password = "${artifactory_password}"
-//      }
-//    }
-//  }
+  repositories {
+    mavenCentral()
+    jcenter()
+
+    maven {
+      url 'https://armory.jfrog.io/armory/gradle-plugins/'
+      credentials {
+        username = "${artifactory_user}"
+        password = "${artifactory_password}"
+      }
+    }
+
+    maven {
+      url 'https://armory.jfrog.io/armory/gradle-dev-local/'
+      credentials {
+        username = "${artifactory_user}"
+        password = "${artifactory_password}"
+      }
+    }
+
+    maven {
+      url 'https://armory.jfrog.io/artifactory/spinnaker/'
+      credentials {
+        username = "${artifactory_user}"
+        password = "${artifactory_password}"
+      }
+    }
+  }
 }
 
 String normalizedVersion() {

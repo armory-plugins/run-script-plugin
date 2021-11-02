@@ -6,7 +6,7 @@ import com.fasterxml.jackson.dataformat.yaml.YAMLFactory
 import com.netflix.spinnaker.orca.clouddriver.config.KubernetesPreconfiguredJobProperties
 import dev.minutest.junit.JUnit5Minutests
 import dev.minutest.rootContext
-import io.kubernetes.client.models.V1EnvVar
+import io.kubernetes.client.openapi.models.V1EnvVar
 import java.io.File
 import kotlin.test.assertEquals
 import kotlin.test.assertNotNull
@@ -29,12 +29,12 @@ class ConfigOverriderTest : JUnit5Minutests {
       assertEquals(job.account, configuration.account)
       assertEquals(job.credentials, configuration.credentials)
 
-      val initContainer = job.manifest.spec.template.spec.initContainers.firstOrNull{ it.name == "git" }
+      val initContainer = job.manifest.spec?.template?.spec?.initContainers?.firstOrNull{ it.name == "git" }
       assertNotNull(initContainer)
       assertEquals(initContainer.image, configuration.initContainerImage)
 
-      val serviceUrlVar = getVariable(initContainer.env, "ARTIFACT_SERVICE")
-      val accountVar = getVariable(initContainer.env, "ARTIFACT_ACCOUNT")
+      val serviceUrlVar = initContainer.env?.let { getVariable(it, "ARTIFACT_SERVICE") }
+      val accountVar = initContainer.env?.let { getVariable(it, "ARTIFACT_ACCOUNT") }
 
       assertNotNull(serviceUrlVar)
       assertNotNull(accountVar)

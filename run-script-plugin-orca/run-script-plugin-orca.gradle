@@ -16,25 +16,6 @@ apply plugin: 'kotlin-kapt'
 sourceCompatibility = 11
 targetCompatibility = 11
 
-repositories {
-    mavenCentral()
-    maven {
-        url 'https://armory.jfrog.io/armory/gradle-dev-local/'
-        credentials {
-            username = "${artifactory_user}"
-            password = "${artifactory_password}"
-        }
-    }
-
-    maven {
-        url 'https://armory.jfrog.io/artifactory/spinnaker/'
-        credentials {
-            username = "${artifactory_user}"
-            password = "${artifactory_password}"
-        }
-    }
-}
-
 spinnakerPlugin {
     serviceName = "orca"
     pluginClass = "com.armory.plugin.preconfigured.RunScriptPlugin"
@@ -44,6 +25,8 @@ dependencies {
     compileOnly(group: 'org.pf4j', name: 'pf4j', version: "${pf4jVersion}") {
         exclude group: "org.slf4j"
     }
+    compileOnly(enforcedPlatform("io.spinnaker.kork:kork-bom:${korkVersion}"))
+    compileOnly(enforcedPlatform("io.spinnaker.orca:orca-bom:${orcaVersion}"))
     compileOnly "org.jetbrains.kotlin:kotlin-stdlib-jdk8:${kotlinVersion}"
     compileOnly (group: 'io.spinnaker.kork', name: 'kork-plugins-api', version: "${korkVersion}")
     compileOnly (group: 'io.spinnaker.orca', name: 'orca-api', version: "${orcaVersion}")
@@ -52,6 +35,7 @@ dependencies {
 
     kapt(group: 'org.pf4j', name: 'pf4j', version: "${pf4jVersion}")
 
+    testImplementation(enforcedPlatform(group: "io.spinnaker.kork", name: "kork-bom", version: "${korkVersion}"))
     testImplementation (group: 'io.spinnaker.orca', name: 'orca-api', version: "${orcaVersion}")
     testImplementation (group: 'io.spinnaker.orca', name: 'orca-clouddriver', version: "${orcaVersion}")
     testImplementation (group: 'io.kubernetes', name: 'client-java', version: "${k8sClientVersion}")
@@ -60,8 +44,9 @@ dependencies {
     testImplementation "org.jetbrains.kotlin:kotlin-test"
     testImplementation "org.jetbrains.kotlin:kotlin-test-junit"
     testImplementation group: 'io.strikt', name: 'strikt-core', version: '0.22.1'
-    testImplementation group: 'dev.minutest', name: 'minutest', version: '1.10.0'
+    testImplementation group: 'dev.minutest', name: 'minutest', version: '1.13.0'
     testImplementation group: 'io.mockk', name: 'mockk', version: '1.9.3'
+    testImplementation group: 'io.spinnaker.kork', name: 'kork-plugins-api', version: "${korkVersion}"
     testImplementation group: 'com.fasterxml.jackson.dataformat', name: 'jackson-dataformat-yaml', version: '2.10.4'
 
     testRuntime "org.junit.jupiter:junit-jupiter-engine:5.4.0"
