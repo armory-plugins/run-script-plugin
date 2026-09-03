@@ -1,3 +1,9 @@
+# ARCHIVED
+
+Spinnaker supports run jobs via the current K8s path including for predfined jobs.  Enhancements LIKE automatic artifact fetches would be a nice to have in the core codebase.  This plugin
+doesn't support nor work securely today and isn't in known use.  We're archiving this at this time.  For questions, or interest, please see the [spinnaker community](https://spinnaker.io) or
+contact [harness sales](sales@harness.io) for assistance on this.
+
 ![CI](https://github.com/armory-plugins/run-script-plugin/workflows/CI/badge.svg)
 ![Latest Orca](https://github.com/armory-plugins/run-script-plugin/workflows/Latest%20Orca/badge.svg?branch=master)
 
